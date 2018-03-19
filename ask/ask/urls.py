@@ -33,17 +33,17 @@ from django.contrib import admin
 
 # from ask.ask.views import found, not_found, init25
 # from ask.qa.views import index, popular, ask, login_view, signup
-from ask.qa.views import test
+from ask.qa.views import test, index, popular
 
 urlpatterns = [
 
-    url(r'^$', test),
+    url(r'^$', index),
     url(r'^init25/', test),
     url(r'^login/', test),
     url(r'^signup/', test),
     url(r'^ask/', test),
     # url(r'^answer/', answer),
-    url(r'^popular/', test),
+    url(r'^popular/', popular),
     url(r'^new/', test),
-    url(r'^question/', test),
+    url(r'^question/', include('qa.urls')),
 ]
