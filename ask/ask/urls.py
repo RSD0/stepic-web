@@ -31,8 +31,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from ask.qa.views import test, index, popular
-# from qa.views import test, index, popular
+#from ask.qa.views import test, index, popular
+from qa.views import test, index, popular
 
 urlpatterns = [
 

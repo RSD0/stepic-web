@@ -2,8 +2,8 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 
-from ask.qa.models import Question
-# from qa.models import Question
+#from ask.qa.models import Question
+from qa.models import Question
 
 
 def test(request, *args, **kwargs):
