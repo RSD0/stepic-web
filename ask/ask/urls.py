@@ -31,9 +31,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-# from ask.ask.views import found, not_found, init25
-# from ask.qa.views import index, popular, ask, login_view, signup
 from ask.qa.views import test, index, popular
+# from qa.views import test, index, popular
 
 urlpatterns = [
 

@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 
 from ask.qa.models import Question
+# from qa.models import Question
 
 
 def test(request, *args, **kwargs):
@@ -21,14 +22,14 @@ def paginate(request, qs):
 
 
 def index(request, *args, **kwargs):
-    p = paginate(request, Question.objects.new())
+    p = paginate(request, Question.objects.all().order_by('-id'))
     return render(request,
                   'list.html',
                   {'questions': p})
 
 
 def popular(request, *args, **kwargs):
-    p = Question.objects.popular()
+    p = Question.objects.all().order_by('-rating')
     return render(request,
                   'list.html',
                   {'questions': p})

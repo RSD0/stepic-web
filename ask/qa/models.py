@@ -1,22 +1,18 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models import CharField, IntegerField, TextField, ForeignKey, ManyToManyField, DateTimeField, \
-    OneToOneField
-from django.urls import reverse
-
-from ask.qa import views
+from django.db.models import CharField, IntegerField, TextField, ForeignKey, ManyToManyField, DateTimeField
 
 
 class QuestionManager(models.Manager):
     def new(self):
-        self.order_by('-added_at')
+        self.all().order_by('-id')
 
     def popular(self):
-        self.order_by('-rating')
+        self.all().order_by('-rating')
 
 
 class Question(models.Model):
-    objects = QuestionManager()
+#    objects = QuestionManager()
     title = CharField(max_length=255, default="")
     text = TextField(default="")
     added_at = DateTimeField(blank=True, auto_now_add=True)
