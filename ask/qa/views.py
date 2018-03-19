@@ -15,6 +15,8 @@ def paginate(request, qs):
         page = int(request.GET.get('page'))
     except ValueError:
         page = 1
+    except TypeError:
+        page = 1
     limit = 10
     paginator = Paginator(qs, limit)
     page = paginator.page(page)
