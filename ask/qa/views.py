@@ -27,14 +27,14 @@ def index(request, *args, **kwargs):
     p = paginate(request, Question.objects.all().order_by('-id'))
     return render(request,
                   'list.html',
-                  {'questions': p})
+                  {'questions': paginate(request, p)})
 
 
 def popular(request, *args, **kwargs):
-    p = Question.objects.all().order_by('-rating')
+    p = paginate(request, Question.objects.all().order_by('-rating'))
     return render(request,
                   'list.html',
-                  {'questions': p})
+                  {'questions': paginate(request, p)})
 
 
 def question(request, *args, **kwargs):
