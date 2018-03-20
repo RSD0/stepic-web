@@ -1,2 +1,4 @@
 .idea/
 local_init.sh
+etc/local_gunicorn-django.conf
+etc/local_nginx.conf

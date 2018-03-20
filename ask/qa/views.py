@@ -1,9 +1,11 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 
 #from ask.qa.models import Question
 from qa.models import Question
+
+from ask.qa.forms import AskForm, AnswerForm
 
 
 def test(request, *args, **kwargs):
@@ -43,6 +45,29 @@ def question(request, *args, **kwargs):
     except Question.DoesNotExist:
         raise Http404
 
+    if request.method == 'POST':
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save()
+            url = q.get_url()
+            return HttpResponseRedirect(url)
+    else:
+        form = AnswerForm(initial={'question': q.id})
     return render(request,
                   'question.html',
-                  {'question': q})
+                  {'question': q,
+                   'form': form})
+
+
+def ask(request):
+    if request.method == 'POST':
+        form = AskForm(request.POST)
+        if form.is_valid():
+            q = form.save()
+            url = q.get_url()
+            return HttpResponseRedirect(url)
+    else:
+        form = AskForm()
+    return render(request,
+                  'ask_form.html',
+                  {'form': form})

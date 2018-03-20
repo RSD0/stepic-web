@@ -12,5 +12,7 @@
         <li>{{ answer }}, {{ answer.author_id }}</li>
     {% endfor %}
     </ul>
+    {% csrf_token %}
+    {{ form.as_p }}
 </body>
 </html>
