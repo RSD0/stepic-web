@@ -12,7 +12,12 @@
         <li>{{ answer }}, {{ answer.author_id }}</li>
     {% endfor %}
     </ul>
-    {% csrf_token %}
-    {{ form.as_p }}
+    <form method="post" action="{{ question.get_url }}">
+        <fieldset>
+            {% csrf_token %}
+            {{ form.as_p }}
+        </fieldset>
+        <button type="submit">Сохранить</button>
+    </form>
 </body>
 </html>

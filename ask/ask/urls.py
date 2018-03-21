@@ -31,16 +31,15 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-#from ask.qa.views import test, index, popular
-from qa.views import test, index, popular
+from qa.views import test, index, popular, ask, signup, login_view
 
 urlpatterns = [
 
     url(r'^$', index),
     url(r'^init25/', test),
-    url(r'^login/', test),
-    url(r'^signup/', test),
-    url(r'^ask/', test),
+    url(r'^login/', login_view),
+    url(r'^signup/', signup),
+    url(r'^ask/', ask),
     # url(r'^answer/', answer),
     url(r'^popular/', popular),
     url(r'^new/', test),
